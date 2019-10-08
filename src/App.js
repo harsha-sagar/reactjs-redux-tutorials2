@@ -1,25 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Provider } from 'react-redux'
+/*
+  step #1: To provide redux-store to react app, react-redux exports a component 'Provider'
+  - Provider component helps to register react app with redux-store
+*/
+
+import store from './redux/store'
+import CakeContainer from './components/containers/CakeContainer'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store = { store }>
+      <div className="App">
+        <CakeContainer />
+      </div>      
+    </Provider>
+    /*
+      step #2: Providing/Registering react application with redux-store.
+      - Provider is registered at very root level of the application.
+        Hence making redux-store available to every component down the tree across application
+    */
   );
 }
 
